@@ -51,6 +51,7 @@ class SourceIoBot:
         time.sleep(0.5)
 
     def find_target(self):
+        time.sleep(3)
         player_list = f'$("#player-list").children("tr")[{int(random.randrange(0, 5))}].click()'
         self.driver.execute_script(player_list)
         self.driver.execute_script('$("#window-other-button").click()')
