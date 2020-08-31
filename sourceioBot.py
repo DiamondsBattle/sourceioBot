@@ -8,8 +8,7 @@ from recognition import extract_images
 
 extract_images.start()
 
-#CHOMEDRIVER_PATH = "r'<full_path_to_your_chromedriver.exe>
-CHOMEDRIVER_PATH = None
+CHOMEDRIVER_PATH = 'C:\\Users\\asus\\OneDrive\\Documents\\s0urce_io-HACK\\chromedriver.exe'
 
 return_values = {"ammount": '$("#window-my-coinamount").text()',
                  "bot_net": '$("#shop-bot-net-value").text()',
@@ -49,17 +48,17 @@ class SourceIoBot:
         self.driver.find_element_by_id("login-input").send_keys(self.username)
         submit = self.driver.find_element_by_tag_name("form")
         submit.submit()
-        time.sleep(2)
+        time.sleep(0.5)
 
     def find_target(self):
         player_list = f'$("#player-list").children("tr")[{int(random.randrange(0, 5))}].click()'
         self.driver.execute_script(player_list)
         self.driver.execute_script('$("#window-other-button").click()')
         self.driver.execute_script('$("#window-other-port{}").click()'.format(random.randrange(1, 3)))
-        time.sleep(0.5)
+        time.sleep(0.125)
 
     def attack(self):
-        time.sleep(3)
+        time.sleep(0.75)
         while True:
             self.find_target()
             progress_bar = self.driver.execute_script('return $("#progressbar-firewall-amount").attr("style")')
@@ -141,7 +140,7 @@ def find_word(link):
 
 
 if __name__ == '__main__':
-    USERNAME = "YOURYOUSERNAME"
+    USERNAME = "[BOT] PyPi"
     S = SourceIoBot(USERNAME)
     S.login()
     S.attack()
